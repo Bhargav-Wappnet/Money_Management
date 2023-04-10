@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Activation Link</title>
+</head>
+<body>
+	<p>Hi {{ user.first_name }} {{ user.last_name }},</p>
+
+	<p>Your account details are:</p>
+
+	<ul>
+		<li>Username: {{ user.username }}</li>
+		<li>Email: {{ user.email }}</li>
+	</ul>
+
+	<p>To complete your Activation Process, please follow below link that redirect you to sigin page:</p>
+
+	<p><a href="http://127.0.0.1:8000/verification/{{ user.id }}">Activate your account</a></p>
+
+	<p>If you did not request for this, please contact us immediately.</p>
+
+	<p>Best regards,<br>
+	Bhargav Borkhatariya - Ajax</p>
+</body>
+</html>

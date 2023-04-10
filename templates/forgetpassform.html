@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{% static 'js/sweetalert.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/forgetpass.css' %}">
+    <title>Forget Password</title>
+  </head>
+  <body>
+    
+    <div class="mainDiv">
+      <div class="cardStyle">
+        <form>
+          {% csrf_token %}        
+          <h2 class="formTitle">
+            Login to your account
+          </h2>
+          
+          <div class="inputDiv">
+            <label class="inputLabel" for="oldpassword">Old Password</label>
+            <input type="password" id="oldpassword" name="oldpassword">
+            <span id="oldpassword-error" style="color:red"></span>
+        </div>
+        
+        <div class="inputDiv">
+          <label class="inputLabel" for="password">New Password</label>
+            <input type="password" id="password" name="password">
+            <span id="password-error" style="color:red"></span>
+          </div>
+          
+          <div class="inputDiv">
+            <label class="inputLabel" for="confirmpassword">Confirm Password</label>
+            <input type="password" id="confirmpassword" name="confirmpassword">
+            <span id="confirmpassword-error" style="color:red"></span>
+        </div>
+        
+        <div class="buttonWrapper">
+            <button type="submit" id="submitButton" class="submitButton pure-button pure-button-primary">
+            <span>Continue</span>
+          </button>
+        </div>
+      </form>
+      <script src="{% static 'js/forgetpassform.js' %}"></script>
+    </div>
+  </div>    
+</body>
+</html>

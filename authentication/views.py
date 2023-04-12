@@ -1,5 +1,3 @@
-import random
-import string
 import services.send_email as mail
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
@@ -33,6 +31,7 @@ def signup(request):
         A JSON response or a rendered template.
     """
     if request.method == "POST":
+
         # Get form values
         username = request.POST["username"]
         email = request.POST["email"]
@@ -42,9 +41,7 @@ def signup(request):
 
         # Check if username or email already exists
         username_exists = User.objects.filter(username=username).exists()
-        print("asdads0", username_exists)
         email_exists = User.objects.filter(email=email).exists()
-        print("asdads1", email_exists)
 
         if username_exists or email_exists:
             # Return JSON response with error message
@@ -56,12 +53,11 @@ def signup(request):
         user = User.objects.create_user(
             username, email, pass1, first_name=fname, last_name=lname
         )
-        print("username", user.username)
         user.is_active = False
         user.save()
 
         # Send activation OTP email to user
-        mail.send_activation_link_email(user)
+        mail.send_activation_link_email.delay(user.id)
 
         # Return JSON response indicating success
         return JsonResponse({"success": True})
@@ -150,7 +146,7 @@ def forgetpass(request):
             return JsonResponse({"usernotfound": True})
 
         # Send forget password email.
-        mail.send_forget_password_email(user)
+        mail.send_forget_password_email.delay(user.id)
 
         # Return success response
         return JsonResponse({"success": True})

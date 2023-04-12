@@ -82,7 +82,7 @@ function signup() {
     var emailError = document.getElementById("email-error");
 
     // Send a request to the server to check if the username and email already exist
-    fetch(`signup`, {
+    fetch(form.action, {
       method: "POST",
       body: data,
     })
@@ -105,11 +105,11 @@ function signup() {
             title: 'verification link sent...',
             text: 'A verification link has been sent to email',
           }).then(() => {
-            window.location.href = `signin`;
+            window.location.href = '/signin';
           });
           form.reset();
         }
-      });x``
+      });
   }
 }
 

@@ -80,7 +80,7 @@ function siginuser() {
                     return false; // Prevent form submission
                 }
                 if (success) {
-                    window.location.href = "";
+                    window.location.href = `dashboard`;
                 }
             })
             .catch(error => console.error(error));

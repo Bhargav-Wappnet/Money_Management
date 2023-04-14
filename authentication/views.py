@@ -96,6 +96,7 @@ def signin(request):
     If the user is not found, the response indicates that the user was not found.
     If the request method is not POST, it renders the sign in page.
 
+
     :param request: The HTTP request.
     :return: The HTTP response.
     """
